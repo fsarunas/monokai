@@ -1,7 +1,7 @@
 {
   "name": "monokai-sublime",
   "theme": "syntax",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Monokai Sublime theme, forked from popular Monokai theme.",
   "keywords": [
     "syntax",
