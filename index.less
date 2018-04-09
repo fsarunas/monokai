@@ -67,7 +67,7 @@ atom-text-editor {
     }
 
     .syntax--raw {
-      color: @blue;
+      color: @yellow;
     }
 
     .syntax--variable.syntax--list {
@@ -99,21 +99,32 @@ atom-text-editor {
 }
 
 .syntax--entity {
-  &.syntax--name.syntax--class {
-    text-decoration: none;
-    color: @green;
-  }
+  &.syntax--name {
+    &.syntax--class {
+      text-decoration: none;
+      color: @green;
+    }
 
-  &.syntax--name.syntax--function {
-    color: @green;
-  }
+    &.syntax--function {
+      color: @green;
 
-  &.syntax--name.syntax--instance {
-    color: @blue;
-  }
+      .syntax--method-call & {
+        color: @blue;
+      }
 
-  &.syntax--name.syntax--tag {
-    color: @pink;
+      .syntax--function-call & {
+        font-style: italic;
+        color: @blue;
+      }
+    }
+
+    &.syntax--instance {
+      color: @blue;
+    }
+
+    &.syntax--tag {
+      color: @pink;
+    }
   }
 
   &.syntax--other.syntax--attribute-name {
@@ -144,10 +155,24 @@ atom-text-editor {
   color: @syntax-text-color;
 }
 
+.syntax--meta.syntax--function {
+  color: @blue;
+}
+
 .syntax--storage {
   color: @pink;
 
+  &.syntax--meta.syntax--class {
+    font-style: italic;
+    color: @blue;
+  }
+
   &.syntax--type {
+    font-style: italic;
+    color: @blue;
+  }
+
+  &.syntax--modifier.syntax--import {
     font-style: italic;
     color: @blue;
   }
@@ -176,11 +201,19 @@ atom-text-editor {
     color: @orange;
   }
 
+
   // 'self' Python
-  &.syntax--language.syntax--python,
+  &.syntax--language.syntax--python.syntax--self,
   // 'this' Javascript
-  &.syntax--language.syntax--js {
-    color: @pink;
+  &.syntax--language.syntax--js.syntax--this,
+  // 'this' Java
+  &.syntax--language.syntax--java.syntax--this {
+      color: @orange;
+      font-style: italic;
+  }
+
+  &.syntax--language.syntax--wildcard {
+    color: @ghost-white;
   }
 }
 
